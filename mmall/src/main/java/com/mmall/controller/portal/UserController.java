@@ -87,12 +87,12 @@ public class UserController {
 
     @RequestMapping(value = "reset_password.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> resetPassword(HttpSession session, String passwordOle, String passwrodNew) {
+    public ServerResponse<String> resetPassword(HttpSession session, String passwordOld, String passwrodNew) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorMessage("用户未登录");
         }
-        return iUserService.resetPassword(passwordOle, passwrodNew, user);
+        return iUserService.resetPassword(passwordOld, passwrodNew, user);
     }
 
     @RequestMapping(value = "update_information.do", method = RequestMethod.POST)
@@ -106,6 +106,7 @@ public class UserController {
         user.setUsername(currentuser.getUsername());
         ServerResponse<User> response = iUserService.updateInformation(user);
         if (response.isSuccess()) {
+            response.getData().setUsername(currentuser.getUsername());
             session.setAttribute(Const.CURRENT_USER, response.getData());
         }
         return response;

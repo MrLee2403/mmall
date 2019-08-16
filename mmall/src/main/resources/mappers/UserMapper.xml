@@ -45,10 +45,10 @@
   </select>
   <select id="checkPassword" resultType="int" parameterType="map">
     select count(1)
-    from  mmall_user where id= #{userId} and password =#{password}
+    from  mmall_user where password =#{password} and id= #{userId}
   </select>
   <select id="checkEmailByUserId" resultType="int" parameterType="map">
-    select count(1) from  mmall_user where email=#{email} and id !+#{userId}
+    select count(1) from  mmall_user where email=#{email} and id !=#{userId}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mmall_user
