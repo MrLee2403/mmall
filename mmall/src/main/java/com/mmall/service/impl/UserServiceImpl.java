@@ -24,7 +24,7 @@ public class UserServiceImpl implements IUserService {
         if (resultCount == 0) {
             return ServerResponse.createByErrorMessage("用户名不存在");
         }
-        //TODO:密码MD5
+        //密码MD5
         String md5Password = MD5Util.MD5EncodeUtf8(password);
         User user = userMapper.selectLogin(username, md5Password);
         if (user == null) {
@@ -137,9 +137,8 @@ public class UserServiceImpl implements IUserService {
         int updateCount = userMapper.updateByPrimaryKeySelective(user);
         if (updateCount>0){
             return ServerResponse.createBySuccessMessage("密码更新成功");
-        }else{
-            return ServerResponse.createByErrorMessage("密码更新失败");
         }
+            return ServerResponse.createByErrorMessage("密码更新失败");
     }
     public ServerResponse<User> updateInformation(User user){
         //username 不能被更新
