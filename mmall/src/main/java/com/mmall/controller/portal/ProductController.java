@@ -18,7 +18,7 @@ public class ProductController {
     @RequestMapping("detail.do")
     @ResponseBody
     public ServerResponse<ProductDetailVo> detail(Integer productId){
-        return iProductService.manageProductDetail(productId);
+        return iProductService.getProductDetail(productId);
     }
     @RequestMapping("list.do")
     @ResponseBody
@@ -27,6 +27,6 @@ public class ProductController {
                                          @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
                                          @RequestParam(value = "pageSize",defaultValue = "10")int pageSize,
                                          @RequestParam(value = "orderBy",defaultValue = "")String orderBy){
-        return iProductService.getProductByKetyWordCategory(keyword, categoryId, pageNum, pageSize, orderBy);
+        return iProductService.getProductByKeyWordCategory(keyword, categoryId, pageNum, pageSize, orderBy);
     }
 }

@@ -28,10 +28,10 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectList" resultMap="BaseResultMap" >
-      select <include refid="Base_Column_List"/>
+      SELECT
+      <include refid="Base_Column_List"/>
       from mmall_product
-      ORDER by asc
-
+      ORDER BY id asc
     </select>
   <select id="selectByNameAndProductId" resultMap="BaseResultMap" parameterType="map">
     select <include refid="Base_Column_List"/>
@@ -49,9 +49,9 @@
   <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
     select <include refid="Base_Column_List"/>
     from mmall_product
-    where staus= 1
+    where status= 1
     <if test="productName!=null">
-      and neme like #{productName}
+      and name like #{productName}
     </if>
     <if test="categoryIdList!=null">
     and category_id in 
