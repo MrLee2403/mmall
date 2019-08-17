@@ -9,7 +9,10 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 
-public class PropertiesUtil {
+public class
+
+
+PropertiesUtil {
 
     private static Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
